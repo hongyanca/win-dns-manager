@@ -18,6 +18,18 @@ This creates `build/windows-amd64/DNSManager.exe`, with the icon from `asset/app
 
 This command builds the executable directly; it does not create an installer or sign the binary. Applying NRPT rules still requires approval through the Windows administrator prompt.
 
+## Install for the current user
+
+After building, run these commands from the project directory in PowerShell:
+
+```powershell
+$installDir = Join-Path $env:LOCALAPPDATA 'Programs\win-dns-manger'
+New-Item -ItemType Directory -Path $installDir -Force | Out-Null
+Copy-Item -LiteralPath 'build\windows-amd64\DNSManager.exe' -Destination $installDir -Force
+```
+
+Launch `DNSManager.exe` from that folder. Rebuild and repeat the copy to update it.
+
 ## Run
 
 Install Go 1.27.4 or later and run `go run ./src` from a Windows terminal. Apply opens the Windows administrator approval prompt; the app itself does not need to be launched as administrator. Run `go test ./...` to check validation and the IP lookup code.
