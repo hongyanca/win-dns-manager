@@ -1,0 +1,8 @@
+{
+  "name": "DNSManager",
+  "identifier": "com.dnsmanager.app",
+  "version": "0.1.0",
+  "icon": "asset/app-icon.png",
+  "main": "./src",
+  "out": "build"
+}
